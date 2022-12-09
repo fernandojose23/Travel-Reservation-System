@@ -122,7 +122,17 @@ if (isset($_POST['submitMail'])) {
     
     <!-- Style -->
 <link rel="stylesheet" href="css/contact.css">
-<body style="background-color: #ffff;">
+
+    <style>
+      .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
+<body style="background-color: #ffff;" class="unselectable">
 
     <div class="nav-wrapper">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -340,6 +350,14 @@ if (isset($_POST['submitMail'])) {
             }, false);
         });
         })();
+    </script>
+
+    <script>
+      $(document).ready(function() {
+          $("body").on("contextmenu", function(e) {
+              return false;
+            });
+        });
     </script>
 
 

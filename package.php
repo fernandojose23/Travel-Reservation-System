@@ -56,8 +56,18 @@ if (isset($_POST['submit'])) {
     include "link.php";
     ?>
     <link rel="stylesheet" href="css/index.css">
+
+    <style>
+      .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
 </head>
-<body>
+<body class="unselectable">
     <div class="nav-wrapper">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand mt-1" href="index.php"><h4>ESCAPE.mɘ</h4></a>
@@ -297,5 +307,13 @@ if (isset($_POST['submit'])) {
         unset($_SESSION['status_error']);
     }
     ?>
+
+    <script>
+      $(document).ready(function() {
+          $("body").on("contextmenu", function(e) {
+              return false;
+            });
+        });
+    </script>
 </body>
 </html>

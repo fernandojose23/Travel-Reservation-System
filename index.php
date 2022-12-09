@@ -108,8 +108,17 @@ if(isset($_POST["submitLocation"])){
     include "link.php";
     ?>
     <link rel="stylesheet" href="css/index.css">
+     <style>
+      .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
 
-<body> 
+<body class="unselectable"> 
 
     <div class="nav-wrapper">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -366,6 +375,13 @@ if(isset($_POST["submitLocation"])){
     <?php
     include 'footer.php';
     ?>
+   <script>
+      $(document).ready(function() {
+          $("body").on("contextmenu", function(e) {
+              return false;
+            });
+        });
+    </script>
 
     <script src="js/sweetalert2.js"></script>
     <?php
@@ -484,6 +500,7 @@ if(isset($_POST["submitLocation"])){
     };
     
     </script>
+    
 </body>
     <script type="text/javascript" src="js/validation.js"></script>
 </html>

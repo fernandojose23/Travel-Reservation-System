@@ -60,7 +60,17 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/about.css">
 
-<body>
+    <style>
+      .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
+
+<body class="unselectable">
 
      <div class="nav-wrapper">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -187,6 +197,13 @@
     <?php
     include 'footer.php';
     ?>
+    <script>
+      $(document).ready(function() {
+          $("body").on("contextmenu", function(e) {
+              return false;
+            });
+        });
+    </script>
 
 </body>
 </html>

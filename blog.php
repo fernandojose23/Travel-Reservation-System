@@ -105,9 +105,20 @@ if (isset($_POST['deleteRecord']) && isset($_POST['deleteIDInput'])) {
 <?php
     include "link.php";
     ?>
+    
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/index.css">
-<body>
+
+    <style>
+      .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
+<body class="unselectable">
     <div class="nav-wrapper">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand mt-1" href="index.php"><h4>ESCAPE.mɘ</h4></a>
@@ -327,6 +338,13 @@ if (isset($_POST['deleteRecord']) && isset($_POST['deleteIDInput'])) {
     include 'footer.php';
     
     ?>
+    <script>
+      $(document).ready(function() {
+          $("body").on("contextmenu", function(e) {
+              return false;
+            });
+        });
+    </script>
     <script src="js/sweetalert2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
 
