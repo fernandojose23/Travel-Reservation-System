@@ -1,32 +1,19 @@
 $(document).ready(function () {
   $("#title_validate").hide();
-  $("#genre_validate").hide();
-  $("#producer_validate").hide();
-  $("#director_validate").hide();
-  $("#release_date_validate").hide();
   $("#rate_validate").hide();
-  $("#duration_validate").hide();
   $("#description_validate").hide();
   $("#trailer_link_validate").hide();
-
   $("#fullname_validate").hide();
   $("#email_validate").hide();
 
   $("#message_validate").hide();
 
   var $titleError = true;
-  var $genreError = true;
-  var $producerError = true;
-  var $directorError = true;
-  var $release_dateError = true;
   var $rateError = true;
-  var $durationError = true;
   var $descriptionError = true;
   var $trailer_linkError = true;
-
   var $fullnameError = true;
   var $emailError = true;
-
   var $messageError = true;
 
   $("#title").keyup(function () {
@@ -69,120 +56,6 @@ $(document).ready(function () {
       $("#title_validate").hide();
     }
   }
-
-  //////////////////////////////////////////
-
-  $("#producer").keyup(function () {
-    producer_check();
-  });
-
-  function producer_check() {
-    var producer_val = $("#producer").val();
-
-    if (producer_val.length == "") {
-      $("#producer_validate").show();
-      $("#producer_validate").html("** producer is required.");
-      $("#producer_validate").focus();
-      $("#producer_validate").css("color", "red");
-      producerError = false;
-      return false;
-    } else {
-      $("#producer_validate").hide();
-    }
-
-    if (producer_val.length < 5) {
-      $("#producer_validate").show();
-      $("#producer_validate").html(
-        "** producer director must be at least 5 characters."
-      );
-      $("#producer_validate").focus();
-      $("#producer_validate").css("color", "red");
-      producerError = false;
-      return false;
-    } else {
-      $("#producer_validate").hide();
-    }
-
-    if (producer_val.length > 100) {
-      $("#producer_validate").show();
-      $("#producer_validate").html("** producer name is too long.");
-      $("#producer_validate").focus();
-      $("#producer_validate").css("color", "red");
-      producerError = false;
-      return false;
-    } else {
-      $("#producer_validate").hide();
-    }
-  }
-
-  ////////////////////////////////////////////////////////
-
-  $("#director").keyup(function () {
-    director_check();
-  });
-
-  function director_check() {
-    var director_val = $("#director").val();
-
-    if (director_val.length == "") {
-      $("#director_validate").show();
-      $("#director_validate").html("** director is required.");
-      $("#director_validate").focus();
-      $("#director_validate").css("color", "red");
-      directorError = false;
-      return false;
-    } else {
-      $("#director_validate").hide();
-    }
-
-    if (director_val.length < 5) {
-      $("#director_validate").show();
-      $("#director_validate").html(
-        "** director name must be at least 5 characters."
-      );
-      $("#director_validate").focus();
-      $("#director_validate").css("color", "red");
-      directorError = false;
-      return false;
-    } else {
-      $("#director_validate").hide();
-    }
-
-    if (director_val.length > 100) {
-      $("#director_validate").show();
-      $("#director_validate").html("** director name is too long.");
-      $("#director_validate").focus();
-      $("#director_validate").css("color", "red");
-      directorError = false;
-      return false;
-    } else {
-      $("#director_validate").hide();
-    }
-  }
-
-  /////////////////////////////////////////////////////////////
-
-  $("#release_date").keyup(function () {
-    release_date_check();
-  });
-
-  function release_date_check() {
-    var release_date_val = $("#release_date").val();
-
-    if (release_date_val.length == "") {
-      $("#release_date_validate").show();
-      $("#release_date_validate").html("** release_date is required.");
-      $("#release_date_validate").focus();
-      $("#release_date_validate").css("color", "red");
-      release_dateError = false;
-      return false;
-    } else {
-      $("#release_date_validate").hide();
-    }
-  }
-
-  /////////////////////////////////////////////////////////////
-
   $("#rate").keyup(function () {
     rate_check();
   });
@@ -251,62 +124,6 @@ $(document).ready(function () {
   });
 
   /////////////////////////////////////////////////////////////
-
-  $("#duration").keyup(function () {
-    duration_check();
-  });
-
-  function duration_check() {
-    var duration_val = $("#duration").val();
-
-    if (duration_val.length == "") {
-      $("#duration_validate").show();
-      $("#duration_validate").html("** duration is required.");
-      $("#duration_validate").focus();
-      $("#duration_validate").css("color", "red");
-      durationError = false;
-      return false;
-    } else {
-      $("#duration_validate").hide();
-    }
-
-    if (duration_val < 30) {
-      $("#duration_validate").show();
-      $("#duration_validate").html("** duration must be at least 30 minutes.");
-      $("#duration_validate").focus();
-      $("#duration_validate").css("color", "red");
-      durationError = false;
-      return false;
-    } else {
-      $("#duration_validate").hide();
-    }
-
-    if (duration_val > 999) {
-      $("#duration_validate").show();
-      $("#duration_validate").html("** Invalid! duration is too long.");
-      $("#duration_validate").focus();
-      $("#duration_validate").css("color", "red");
-      durationError = false;
-      return false;
-    } else {
-      $("#duration_validate").hide();
-    }
-  }
-
-  $("#duration").keypress(function (e) {
-    var regex = new RegExp("^[0-9.]+$");
-    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-    if (regex.test(str)) {
-      return true;
-    } else {
-      e.preventDefault();
-      $("#duration_validate").show();
-      $("#duration_validate").html("** duration must be a number.");
-      $("#duration_validate").focus();
-      $("#duration_validate").css("color", "red");
-      return false;
-    }
-  });
 
   /////////////////////////////////////////////////////////////
 
@@ -549,35 +366,16 @@ $(document).ready(function () {
   ///////////////////////////////////////////////////////////
 
   $("#validateSubmit").click(function () {
-    $titleError =
-      $genreError =
-      $producerError =
-      $directorError =
-      $release_dateError =
-      $rateError =
-      $durationError =
-      $descriptionError =
-      $trailer_linkError =
-        true;
+    $titleError = $rateError = $descriptionError = $trailer_linkError = true;
 
     $title_check();
-    $genre_check();
-    $producer_check();
-    $director_check();
-    $release_date_check();
     $rate_check();
-    $duration_check();
     $description_check();
     $trailer_link_check();
 
     if (
       titleError == true &&
-      genreError == true &&
-      producerError == true &&
-      directorError == true &&
-      release_dateError == true &&
       rateError == true &&
-      durationError == true &&
       descriptionError == true &&
       trailer_linkError == true
     ) {
